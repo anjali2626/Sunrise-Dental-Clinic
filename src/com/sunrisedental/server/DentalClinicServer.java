@@ -8,6 +8,7 @@ import com.sunrisedental.controller.TreatmentController;
 import com.sunrisedental.controller.AppointmentController;
 import com.sunrisedental.controller.BillController;
 import com.sunrisedental.controller.UserController;
+import com.sunrisedental.controller.AuthController;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -22,6 +23,14 @@ public class DentalClinicServer {
 
             HttpServer server = HttpServer.create(
                     new InetSocketAddress(PORT), 0);
+            
+            AuthController authController =
+                    new AuthController();
+
+            server.createContext(
+                    "/api/auth/login",
+                    authController
+            );
 
             
             server.createContext("/", exchange -> {

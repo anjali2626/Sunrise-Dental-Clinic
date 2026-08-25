@@ -4,20 +4,20 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import com.sunrisedental.model.User;
-import com.sunrisedental.service.UserService;
+import com.sunrisedental.service.AuthService;
 import com.sunrisedental.util.HttpUtil;
 
 import java.io.IOException;
 import java.util.Map;
 
-public class UserController
+public class AuthController
         implements HttpHandler {
 
-    private final UserService userService;
+    private final AuthService authService;
 
-    public UserController() {
-        this.userService =
-                new UserService();
+    public AuthController() {
+        this.authService =
+                new AuthService();
     }
 
     @Override
@@ -58,7 +58,7 @@ public class UserController
                     data.get("password");
 
             User user =
-                    userService.authenticate(
+                    authService.login(
                             username,
                             password);
 
@@ -75,7 +75,10 @@ public class UserController
             String response =
                     "{"
                     + "\"success\":true,"
-                    + "\"message\":\"Login successful.\","
+                    + "\"message\":\"Login successful\","
+                    + "\"userId\":"
+                    + user.getUserId()
+                    + ","
                     + "\"username\":\""
                     + HttpUtil.escapeJson(
                             user.getUsername())
