@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Billing | Sunrise Dental Clinic</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<div class="app-layout">
+
+<aside class="sidebar">
+
+<div class="brand">
+<div class="brand-icon">🦷</div>
+<div>
+<h1>Sunrise Dental</h1>
+<span>Clinic Management</span>
+</div>
+</div>
+
+<nav class="nav-menu">
+
+<div class="nav-section-title">Main</div>
+
+<a href="dashboard.html" class="nav-link">
+<span class="nav-icon">📊</span>
+<span>Dashboard</span>
+</a>
+
+<a href="appointment.html" class="nav-link">
+<span class="nav-icon">📅</span>
+<span>Appointments</span>
+</a>
+
+<a href="search.html" class="nav-link">
+<span class="nav-icon">👥</span>
+<span>Patients</span>
+</a>
+
+<div class="nav-section-title">Management</div>
+
+<a href="billing.html" class="nav-link active">
+<span class="nav-icon">💳</span>
+<span>Billing</span>
+</a>
+
+<a href="reports.html" class="nav-link">
+<span class="nav-icon">📈</span>
+<span>Reports</span>
+</a>
+
+<a href="help.html" class="nav-link">
+<span class="nav-icon">❓</span>
+<span>Help</span>
+</a>
+
+</nav>
+
+<div class="sidebar-bottom">
+<a href="login.html" class="nav-link">
+<span class="nav-icon">🚪</span>
+<span>Logout</span>
+</a>
+</div>
+
+</aside>
+
+<main class="main-content">
+
+<header class="topbar">
+
+<div class="page-title">
+<h2>Billing</h2>
+<p>Manage patient bills and payments</p>
+</div>
+
+<div class="user-area">
+<div class="user-avatar">CA</div>
+<div class="user-info">
+<strong>Clinic Administrator</strong>
+<span>Staff</span>
+</div>
+</div>
+
+</header>
+
+<section class="content">
+
+<div class="toolbar">
+
+<div>
+<h2>Billing Management</h2>
+<p style="color:#64748b;font-size:13px;">
+Create and review patient bills.
+</p>
+</div>
+
+<button class="btn btn-primary"
+onclick="document.getElementById('billingForm').scrollIntoView()">
++ Create Bill
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="card-header">
+<h3>Create Patient Bill</h3>
+</div>
+
+<div class="card-body">
+
+<form id="billingForm">
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label class="form-label">
+Appointment
+</label>
+
+<select id="billAppointment" class="form-control">
+<option value="">Select appointment</option>
+<option>APT-001 - John Silva</option>
+<option>APT-002 - Sarah Fernando</option>
+<option>APT-003 - David Perera</option>
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label class="form-label">
+Consultation Fee
+</label>
+
+<input
+type="number"
+id="consultationFee"
+class="form-control"
+placeholder="0.00"
+step="0.01">
+
+</div>
+
+<div class="form-group">
+
+<label class="form-label">
+Treatment Cost
+</label>
+
+<input
+type="number"
+id="treatmentCost"
+class="form-control"
+placeholder="0.00"
+step="0.01">
+
+</div>
+
+<div class="form-group">
+
+<label class="form-label">
+Total Amount
+</label>
+
+<input
+type="number"
+id="totalAmount"
+class="form-control"
+placeholder="0.00"
+readonly>
+
+</div>
+
+</div>
+
+<button
+type="submit"
+class="btn btn-primary">
+Save Bill
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<div class="card-header">
+<h3>Recent Bills</h3>
+</div>
+
+<div class="table-wrapper">
+
+<table class="data-table">
+
+<thead>
+
+<tr>
+<th>Bill ID</th>
+<th>Appointment</th>
+<th>Patient</th>
+<th>Consultation</th>
+<th>Treatment</th>
+<th>Total</th>
+<th>Date</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>BILL-001</td>
+<td>APT-001</td>
+<td>John Silva</td>
+<td>Rs. 2,000</td>
+<td>Rs. 5,000</td>
+<td><strong>Rs. 7,000</strong></td>
+<td>2026-08-27</td>
+</tr>
+
+<tr>
+<td>BILL-002</td>
+<td>APT-002</td>
+<td>Sarah Fernando</td>
+<td>Rs. 2,000</td>
+<td>Rs. 8,500</td>
+<td><strong>Rs. 10,500</strong></td>
+<td>2026-08-27</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="footer">
+© 2026 Sunrise Dental Clinic Management System
+</div>
+
+</main>
+
+</div>
+
+<script src="../js/billing.js"></script>
+
+</body>
+</html>
