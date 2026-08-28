@@ -1,6 +1,6 @@
 package com.sunrisedental.server;
 
-import com.sun.net.httpserver.HttpServer;
+import com.sun.net.httpserver.HttpServer; 
 
 import com.sunrisedental.controller.PatientController;
 import com.sunrisedental.controller.DentistController;
@@ -9,6 +9,7 @@ import com.sunrisedental.controller.AppointmentController;
 import com.sunrisedental.controller.BillController;
 import com.sunrisedental.controller.UserController;
 import com.sunrisedental.controller.AuthController;
+import com.sunrisedental.controller.DashboardController;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -80,6 +81,10 @@ public class DentalClinicServer {
             server.createContext(
                     "/api/login",
                     new UserController());
+            
+            server.createContext(
+                    "/api/dashboard",
+                    new DashboardController());
 
             
             server.setExecutor(null);
@@ -115,6 +120,10 @@ public class DentalClinicServer {
             System.out.println(
                     "Login API: http://localhost:" + PORT
                             + "/api/login");
+            
+            System.out.println(
+                    "Dashboard API: http://localhost:" + PORT
+                            + "/api/dashboard");
 
         } catch (IOException e) {
 

@@ -12,7 +12,7 @@
 }
 
 .welcome-banner p {
-    color: #ccfbf1;
+    color: white;
     font-size: 13px;
 }
 
@@ -20,18 +20,59 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
+	color: white;
 }
 
-.quick-action {
+.quick-action-1 {
     padding: 20px;
-    background: white;
+    background: rgb(1, 77, 19);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: 0.2s;
+	color: white;
+}
+
+.quick-action-1:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.quick-action-2 {
+    padding: 20px;
+    background: rgb(105, 44, 127);
     border: 1px solid var(--border);
     border-radius: 12px;
     transition: 0.2s;
 }
 
-.quick-action:hover {
-    transform: translateY(-2px);
+.quick-action-2:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.quick-action-3 {
+    padding: 20px;
+    background: rgb(15, 88, 92);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+.quick-action-3:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.quick-action-4 {
+    padding: 20px;
+    background: rgb(153, 20, 35);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+.quick-action-4:hover {
+    transform: translateY(-5px);
     box-shadow: var(--shadow);
 }
 
@@ -40,13 +81,19 @@
     margin-bottom: 10px;
 }
 
-.quick-action h4 {
+.quick-action-icon-1 {
+    font-size: 25px;
+    margin-bottom: 10px;
+	color: white;
+}
+
+.quick-action-1, .quick-action-2, .quick-action-3, .quick-action-4, h4 {
     font-size: 14px;
 }
 
-.quick-action p {
+.quick-action-1, .quick-action-2, .quick-action-3, .quick-action-4, p {
     font-size: 11px;
-    color: var(--muted);
+    color: white;
 }
 
 @media (max-width: 1000px) {
