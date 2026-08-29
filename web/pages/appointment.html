@@ -1,13 +1,18 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Appointments | Sunrise Dental Clinic</title>
 
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet"
+      href="../css/style.css">
 
 </head>
 
@@ -15,309 +20,568 @@
 
 <div class="app-layout">
 
+
+<!-- =====================================================
+     SIDEBAR
+     ===================================================== -->
+
 <aside class="sidebar">
 
-<div class="brand">
-<div class="brand-icon">🦷</div>
-<div>
-<h1>Sunrise Dental</h1>
-<span>Clinic Management</span>
-</div>
-</div>
+    <div class="brand">
 
-<nav class="nav-menu">
+        <div class="brand-icon">🦷</div>
 
-<div class="nav-section-title">Main</div>
+        <div>
 
-<a href="dashboard.html" class="nav-link">
-<span class="nav-icon">📊</span>
-<span>Dashboard</span>
-</a>
+            <h1>Sunrise Dental</h1>
 
-<a href="appointment.html" class="nav-link active">
-<span class="nav-icon">📅</span>
-<span>Appointments</span>
-</a>
+            <span>Clinic Management</span>
 
-<a href="search.html" class="nav-link">
-<span class="nav-icon">👥</span>
-<span>Patients</span>
-</a>
+        </div>
 
-<div class="nav-section-title">Management</div>
+    </div>
 
-<a href="billing.html" class="nav-link">
-<span class="nav-icon">💳</span>
-<span>Billing</span>
-</a>
 
-<a href="reports.html" class="nav-link">
-<span class="nav-icon">📈</span>
-<span>Reports</span>
-</a>
+    <nav class="nav-menu">
 
-<a href="help.html" class="nav-link">
-<span class="nav-icon">❓</span>
-<span>Help</span>
-</a>
+        <div class="nav-section-title">
+            Main
+        </div>
 
-</nav>
 
-<div class="sidebar-bottom">
+        <a href="dashboard.html"
+           class="nav-link">
 
-<a href="login.html" class="nav-link">
-<span class="nav-icon">🚪</span>
-<span>Logout</span>
-</a>
+            <span class="nav-icon">📊</span>
 
-</div>
+            <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="appointment.html"
+           class="nav-link active">
+
+            <span class="nav-icon">📅</span>
+
+            <span>Appointments</span>
+
+        </a>
+
+
+        <a href="search.html"
+           class="nav-link">
+
+            <span class="nav-icon">👥</span>
+
+            <span>Patients</span>
+
+        </a>
+
+
+        <div class="nav-section-title">
+            Management
+        </div>
+
+
+        <a href="billing.html"
+           class="nav-link">
+
+            <span class="nav-icon">💳</span>
+
+            <span>Billing</span>
+
+        </a>
+
+
+        <a href="reports.html"
+           class="nav-link">
+
+            <span class="nav-icon">📈</span>
+
+            <span>Reports</span>
+
+        </a>
+
+
+        <a href="help.html"
+           class="nav-link">
+
+            <span class="nav-icon">❓</span>
+
+            <span>Help</span>
+
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <a href="login.html"
+           class="nav-link">
+
+            <span class="nav-icon">🚪</span>
+
+            <span>Logout</span>
+
+        </a>
+
+    </div>
 
 </aside>
 
+
+
+<!-- =====================================================
+     MAIN CONTENT
+     ===================================================== -->
+
 <main class="main-content">
+
+
+<!-- =====================================================
+     TOP BAR
+     ===================================================== -->
 
 <header class="topbar">
 
-<div class="page-title">
-<h2>Appointments</h2>
-<p>Manage patient appointments</p>
-</div>
+    <div class="page-title">
 
-<div class="user-area">
+        <h2>Appointments</h2>
 
-<div class="user-avatar">CA</div>
+        <p>Manage patient appointments</p>
 
-<div class="user-info">
-<strong>Clinic Administrator</strong>
-<span>Staff</span>
-</div>
+    </div>
 
-</div>
+
+    <div class="user-area">
+
+        <div class="user-avatar">
+            CA
+        </div>
+
+        <div class="user-info">
+
+            <strong>
+                Clinic Administrator
+            </strong>
+
+            <span>
+                Staff
+            </span>
+
+        </div>
+
+    </div>
 
 </header>
 
+
+
+<!-- =====================================================
+     CONTENT
+     ===================================================== -->
+
 <section class="content">
+
+
+<!-- =====================================================
+     APPOINTMENT MANAGEMENT HEADER
+     ===================================================== -->
 
 <div class="toolbar">
 
-<div>
-<h2>Appointment Management</h2>
-<p style="color:#64748b;font-size:13px;">
-Create and manage clinic appointments.
-</p>
+    <div>
+
+        <h2>
+            Appointment Management
+        </h2>
+
+        <p style="color:#64748b;font-size:13px;">
+
+            Create and manage clinic appointments.
+
+        </p>
+
+    </div>
+
+
+    <button
+
+        type="button"
+
+        class="btn btn-primary"
+
+        onclick="document
+                 .getElementById('appointmentForm')
+                 .scrollIntoView()">
+
+        + New Appointment
+
+    </button>
+
 </div>
 
-<button
-class="btn btn-primary"
-onclick="document.getElementById('appointmentForm').scrollIntoView()">
-+ New Appointment
-</button>
 
-</div>
+
+<!-- =====================================================
+     NEW APPOINTMENT
+     ===================================================== -->
 
 <div class="card">
 
-<div class="card-header">
-<h3>New Appointment</h3>
+    <div class="card-header">
+
+        <h3>
+            New Appointment
+        </h3>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <form id="appointmentForm">
+
+
+            <div class="form-grid">
+
+
+                <!-- APPOINTMENT NUMBER -->
+
+                <div class="form-group">
+
+                    <label class="form-label">
+
+                        Appointment Number
+
+                    </label>
+
+
+                    <input
+
+                        type="text"
+
+                        class="form-control"
+
+                        id="appointmentNumber"
+
+                        placeholder="e.g. APT-004">
+
+                </div>
+
+
+
+                <!-- PATIENT -->
+
+                <div class="form-group">
+
+                    <label class="form-label">
+
+                        Patient
+
+                    </label>
+
+
+                    <select
+
+                        class="form-control"
+
+                        id="patient">
+
+                        <option value="">
+
+                            Loading patients...
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- DENTIST -->
+
+                <div class="form-group">
+
+                    <label class="form-label">
+
+                        Dentist
+
+                    </label>
+
+
+                    <select
+
+                        class="form-control"
+
+                        id="dentist">
+
+                        <option value="">
+
+                            Loading dentists...
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- TREATMENT -->
+
+                <div class="form-group">
+
+                    <label class="form-label">
+
+                        Treatment
+
+                    </label>
+
+
+                    <select
+
+                        class="form-control"
+
+                        id="treatment">
+
+                        <option value="">
+
+                            Loading treatments...
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- DATE -->
+
+                <div class="form-group">
+
+                    <label class="form-label">
+
+                        Appointment Date
+
+                    </label>
+
+
+                    <input
+
+                        type="date"
+
+                        class="form-control"
+
+                        id="appointmentDate">
+
+                </div>
+
+
+
+                <!-- TIME -->
+
+                <div class="form-group">
+
+                    <label class="form-label">
+
+                        Appointment Time
+
+                    </label>
+
+
+                    <input
+
+                        type="time"
+
+                        class="form-control"
+
+                        id="appointmentTime">
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- BUTTONS -->
+
+            <div style="margin-top:10px;">
+
+                <button
+
+                    type="submit"
+
+                    class="btn btn-primary">
+
+                    Save Appointment
+
+                </button>
+
+
+                <button
+
+                    type="reset"
+
+                    class="btn btn-secondary">
+
+                    Clear
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
 </div>
 
-<div class="card-body">
-
-<form id="appointmentForm">
-
-<div class="form-grid">
-
-<div class="form-group">
-
-<label class="form-label">
-Appointment Number
-</label>
-
-<input
-type="text"
-class="form-control"
-id="appointmentNumber"
-placeholder="e.g. APT-004">
-
-</div>
-
-<div class="form-group">
-
-<label class="form-label">
-Patient
-</label>
-
-<select class="form-control" id="patient">
-<option value="">Select patient</option>
-<option>John Silva</option>
-<option>Sarah Fernando</option>
-<option>David Perera</option>
-</select>
-
-</div>
-
-<div class="form-group">
-
-<label class="form-label">
-Dentist
-</label>
-
-<select class="form-control" id="dentist">
-<option value="">Select dentist</option>
-<option>Dr. Perera</option>
-<option>Dr. Kumar</option>
-<option>Dr. Silva</option>
-</select>
-
-</div>
-
-<div class="form-group">
-
-<label class="form-label">
-Treatment
-</label>
-
-<select class="form-control" id="treatment">
-<option value="">Select treatment</option>
-<option>Dental Cleaning</option>
-<option>Dental Filling</option>
-<option>Root Canal</option>
-<option>Tooth Extraction</option>
-</select>
-
-</div>
-
-<div class="form-group">
-
-<label class="form-label">
-Appointment Date
-</label>
-
-<input
-type="date"
-class="form-control"
-id="appointmentDate">
-
-</div>
-
-<div class="form-group">
-
-<label class="form-label">
-Appointment Time
-</label>
-
-<input
-type="time"
-class="form-control"
-id="appointmentTime">
-
-</div>
-
-</div>
-
-<div style="margin-top:10px;">
-
-<button
-type="submit"
-class="btn btn-primary">
-Save Appointment
-</button>
-
-<button
-type="reset"
-class="btn btn-secondary">
-Clear
-</button>
-
-</div>
-
-</form>
-
-</div>
-
-</div>
 
 <br>
 
+
+
+<!-- =====================================================
+     UPCOMING APPOINTMENTS
+     ===================================================== -->
+
 <div class="card">
 
-<div class="card-header">
+    <div class="card-header">
 
-<h3>Upcoming Appointments</h3>
+        <h3>
+            Upcoming Appointments
+        </h3>
 
-<div class="search-box">
-<input
-type="text"
-id="appointmentSearch"
-placeholder="Search appointment...">
+
+        <div class="search-box">
+
+            <input
+
+                type="text"
+
+                id="appointmentSearch"
+
+                placeholder="Search appointment...">
+
+        </div>
+
+    </div>
+
+
+
+    <div class="table-wrapper">
+
+        <table
+
+            class="data-table"
+
+            id="appointmentTable">
+
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Appointment No.
+                    </th>
+
+                    <th>
+                        Patient
+                    </th>
+
+                    <th>
+                        Dentist
+                    </th>
+
+                    <th>
+                        Treatment
+                    </th>
+
+                    <th>
+                        Date
+                    </th>
+
+                    <th>
+                        Time
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <!--
+                    Appointment records will be
+                    loaded dynamically from MySQL
+                    through the REST API.
+                -->
+
+                <tr>
+
+                    <td colspan="7"
+                        style="text-align:center;">
+
+                        Loading appointments...
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+
+        </table>
+
+    </div>
+
 </div>
 
-</div>
-
-<div class="table-wrapper">
-
-<table class="data-table" id="appointmentTable">
-
-<thead>
-
-<tr>
-<th>Appointment No.</th>
-<th>Patient</th>
-<th>Dentist</th>
-<th>Treatment</th>
-<th>Date</th>
-<th>Time</th>
-<th>Status</th>
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-<td>APT-001</td>
-<td>John Silva</td>
-<td>Dr. Perera</td>
-<td>Dental Cleaning</td>
-<td>2026-08-27</td>
-<td>09:00</td>
-<td>
-<span class="badge badge-success">Scheduled</span>
-</td>
-</tr>
-
-<tr>
-<td>APT-002</td>
-<td>Sarah Fernando</td>
-<td>Dr. Kumar</td>
-<td>Dental Filling</td>
-<td>2026-08-27</td>
-<td>10:30</td>
-<td>
-<span class="badge badge-info">Confirmed</span>
-</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
 
 </section>
 
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
 <div class="footer">
-© 2026 Sunrise Dental Clinic Management System
+
+    © 2026 Sunrise Dental Clinic Management System
+
 </div>
+
 
 </main>
 
 </div>
 
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
 <script src="../js/validation.js"></script>
+
 <script src="../js/appointments.js"></script>
 
+
 </body>
+
 </html>
