@@ -1,15 +1,18 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<title>Patients | Sunrise Dental Clinic</title>
+    <title>Patients | Sunrise Dental Clinic</title>
 
-<link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet"
+          href="../css/style.css">
 
 </head>
 
@@ -19,571 +22,431 @@
 <div class="app-layout">
 
 
-<aside class="sidebar">
+    <!-- ================= SIDEBAR ================= -->
 
-    <div class="brand">
+    <aside class="sidebar">
 
-        <div class="brand-icon">🦷</div>
+        <div class="brand">
 
-        <div>
+            <div class="brand-icon">🦷</div>
 
-            <h1>Sunrise Dental</h1>
+            <div>
 
-            <span>Clinic Management</span>
+                <h1>Sunrise Dental</h1>
+
+                <span>Clinic Management</span>
+
+            </div>
 
         </div>
 
-    </div>
+
+        <nav class="nav-menu">
+
+            <div class="nav-section-title">
+                Main
+            </div>
 
 
-    <nav class="nav-menu">
+            <a href="dashboard.html"
+               class="nav-link">
 
-        <div class="nav-section-title">Main</div>
+                <span class="nav-icon">📊</span>
 
+                <span>Dashboard</span>
 
-        <a href="dashboard.html" class="nav-link">
-
-            <span class="nav-icon">📊</span>
-
-            <span>Dashboard</span>
-
-        </a>
+            </a>
 
 
-        <a href="appointment.html" class="nav-link">
+            <a href="appointment.html"
+               class="nav-link">
 
-            <span class="nav-icon">📅</span>
+                <span class="nav-icon">📅</span>
 
-            <span>Appointments</span>
+                <span>Appointments</span>
 
-        </a>
-
-
-        <a href="search.html" class="nav-link active">
-
-            <span class="nav-icon">👥</span>
-
-            <span>Patients</span>
-
-        </a>
+            </a>
 
 
-        <div class="nav-section-title">Management</div>
+            <a href="search.html"
+               class="nav-link active">
+
+                <span class="nav-icon">👥</span>
+
+                <span>Patients</span>
+
+            </a>
 
 
-        <a href="billing.html" class="nav-link">
-
-            <span class="nav-icon">💳</span>
-
-            <span>Billing</span>
-
-        </a>
+            <div class="nav-section-title">
+                Management
+            </div>
 
 
-        <a href="reports.html" class="nav-link">
+            <a href="billing.html"
+               class="nav-link">
 
-            <span class="nav-icon">📈</span>
+                <span class="nav-icon">💳</span>
 
-            <span>Reports</span>
+                <span>Billing</span>
 
-        </a>
-
-
-        <a href="help.html" class="nav-link">
-
-            <span class="nav-icon">❓</span>
-
-            <span>Help</span>
-
-        </a>
-
-    </nav>
+            </a>
 
 
-    <div class="sidebar-bottom">
+            <a href="reports.html"
+               class="nav-link">
 
-        <a href="login.html" class="nav-link">
+                <span class="nav-icon">📈</span>
 
-            <span class="nav-icon">🚪</span>
+                <span>Reports</span>
 
-            <span>Logout</span>
-
-        </a>
-
-    </div>
-
-</aside>
+            </a>
 
 
-<main class="main-content">
+            <a href="help.html"
+               class="nav-link">
+
+                <span class="nav-icon">❓</span>
+
+                <span>Help</span>
+
+            </a>
+
+        </nav>
 
 
-<header class="topbar">
+        <div class="sidebar-bottom">
 
-    <div class="page-title">
+            <a href="login.html"
+               class="nav-link">
 
-        <h2>Patients</h2>
+                <span class="nav-icon">🚪</span>
 
-        <p>Patient records and information</p>
+                <span>Logout</span>
 
-    </div>
-
-
-    <div class="user-area">
-
-        <div class="user-avatar">CA</div>
-
-        <div class="user-info">
-
-            <strong>Clinic Administrator</strong>
-
-            <span>Staff</span>
+            </a>
 
         </div>
 
-    </div>
-
-</header>
-
-<section class="content">
-
-<div class="toolbar">
-
-    <div>
-
-        <h2>Patient Management</h2>
-
-        <p style="color:#64748b;font-size:13px;">
-
-            Add, search and manage patient records.
-
-        </p>
-
-    </div>
+    </aside>
 
 
-    <button
+    <!-- ================= MAIN CONTENT ================= -->
 
-        type="button"
-
-        class="btn btn-primary"
-
-        onclick="document.getElementById('patientForm').scrollIntoView()">
-
-        + Add Patient
-
-    </button>
-
-</div>
+    <main class="main-content">
 
 
-<div class="card">
+        <!-- ================= TOP BAR ================= -->
 
-    <div class="card-header">
+        <header class="topbar">
 
-        <h3>Add New Patient</h3>
+            <div class="page-title">
 
-    </div>
+                <h2>Patients</h2>
 
-
-    <div class="card-body">
-
-        <form id="patientForm">
-
-
-            <div class="form-grid">
-
-
-                <div class="form-group">
-
-                    <label class="form-label">
-
-                        Patient Name
-
-                    </label>
-
-                    <input
-
-                        type="text"
-
-                        class="form-control"
-
-                        id="patientName"
-
-                        placeholder="Enter patient name">
-
-                </div>
-
-
-
-                <div class="form-group">
-
-                    <label class="form-label">
-
-                        Address
-
-                    </label>
-
-                    <input
-
-                        type="text"
-
-                        class="form-control"
-
-                        id="address"
-
-                        placeholder="Enter patient address">
-
-                </div>
-
-
-
-                <div class="form-group">
-
-                    <label class="form-label">
-
-                        Contact Number
-
-                    </label>
-
-                    <input
-
-                        type="text"
-
-                        class="form-control"
-
-                        id="contactNumber"
-
-                        placeholder="Enter contact number">
-
-                </div>
-
+                <p>
+                    Patient records and information
+                </p>
 
             </div>
 
 
-            <div style="margin-top:10px;">
+            <div class="user-area">
+
+                <div class="user-avatar">
+                    CA
+                </div>
+
+                <div class="user-info">
+
+                    <strong>
+                        Clinic Administrator
+                    </strong>
+
+                    <span>
+                        Staff
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <section class="content">
+
+
+            <!-- ================= PATIENT MANAGEMENT HEADER ================= -->
+
+            <div class="toolbar">
+
+                <div>
+
+                    <h2>
+                        Patient Management
+                    </h2>
+
+                    <p style="color:#64748b;font-size:13px;">
+
+                        Search and manage patient records.
+
+                    </p>
+
+                </div>
+
 
                 <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="showAddPatientBtn">
 
-                    type="submit"
-
-                    class="btn btn-primary">
-
-                    Add Patient
-
-                </button>
-
-
-                <button
-
-                    type="reset"
-
-                    class="btn btn-secondary">
-
-                    Clear
+                    + Add Patient
 
                 </button>
 
             </div>
 
 
-        </form>
+            <!-- ================= ADD PATIENT SECTION ================= -->
 
-    </div>
+            <div
+                class="card"
+                id="addPatientSection"
+                style="display:none;margin-bottom:20px;">
 
-</div>
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Add New Patient
+                        </h3>
+
+                        <p
+                            style="color:#64748b;
+                                   font-size:13px;
+                                   margin-top:4px;">
+
+                            Enter patient information.
+
+                        </p>
+
+                    </div>
+
+                </div>
 
 
+                <div class="card-body">
 
-<br>
-
-
-
-<div class="card">
-
-    <div class="card-header">
-
-        <h3>Patient Records</h3>
+                    <form id="addPatientForm">
 
 
-        <div class="search-box">
+                        <!-- PATIENT NAME -->
 
-            <input
+                        <div class="form-group">
 
-                type="text"
+                            <label class="form-label"
+                                   for="patientName">
 
-                id="patientSearch"
+                                Patient Name
 
-                placeholder="Search patient...">
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="patientName"
+                                class="form-control"
+                                placeholder="Enter patient name">
+
+                        </div>
+
+
+                        <!-- ADDRESS -->
+
+                        <div class="form-group">
+
+                            <label class="form-label"
+                                   for="address">
+
+                                Address
+
+                            </label>
+
+
+                            <textarea
+                                id="address"
+                                class="form-control"
+                                rows="3"
+                                placeholder="Enter patient's address"></textarea>
+
+                        </div>
+
+
+                        <!-- CONTACT NUMBER -->
+
+                        <div class="form-group">
+
+                            <label class="form-label"
+                                   for="contactNumber">
+
+                                Contact Number
+
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="contactNumber"
+                                class="form-control"
+                                placeholder="Enter 10-digit contact number"
+                                maxlength="10">
+
+                        </div>
+
+
+                        <!-- BUTTONS -->
+
+                        <div
+                            style="display:flex;
+                                   justify-content:flex-end;
+                                   gap:10px;
+                                   margin-top:10px;">
+
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                id="cancelAddPatientBtn">
+
+                                Cancel
+
+                            </button>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary">
+
+                                Add Patient
+
+                            </button>
+
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= PATIENT RECORDS ================= -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <h3>
+                        Patient Records
+                    </h3>
+
+
+                    <div class="search-box">
+
+                        <input
+                            type="text"
+                            id="patientSearch"
+                            placeholder="Search patient...">
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table
+                        class="data-table"
+                        id="patientTable">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    ID
+                                </th>
+
+                                <th>
+                                    Patient Name
+                                </th>
+
+                                <th>
+                                    Address
+                                </th>
+
+                                <th>
+                                    Contact Number
+                                </th>
+
+                                <th>
+                                    Actions
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <!-- JavaScript loads MySQL records here -->
+
+                        <tbody>
+
+                            <tr>
+
+                                <td colspan="5"
+                                    style="text-align:center;
+                                           color:#64748b;">
+
+                                    Loading patient records...
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <div class="footer">
+
+            © 2026 Sunrise Dental Clinic Management System
 
         </div>
 
-    </div>
 
-
-
-    <div class="table-wrapper">
-
-        <table
-
-            class="data-table"
-
-            id="patientTable">
-
-
-            <thead>
-
-                <tr>
-
-                    <th>ID</th>
-
-                    <th>Patient Name</th>
-
-                    <th>Address</th>
-
-                    <th>Contact Number</th>
-
-                    <th>Actions</th>
-
-                </tr>
-
-            </thead>
-
-
-
-            <tbody>
-
-
-                <tr>
-
-                    <td>1</td>
-
-                    <td>John Silva</td>
-
-                    <td>Colombo 05</td>
-
-                    <td>0771234567</td>
-
-                    <td>
-
-                        <button
-
-                            type="button"
-
-                            class="btn btn-secondary btn-sm">
-
-                            View
-
-                        </button>
-
-                    </td>
-
-                </tr>
-
-
-
-                <tr>
-
-                    <td>2</td>
-
-                    <td>Sarah Fernando</td>
-
-                    <td>Colombo 03</td>
-
-                    <td>0712345678</td>
-
-                    <td>
-
-                        <button
-
-                            type="button"
-
-                            class="btn btn-secondary btn-sm">
-
-                            View
-
-                        </button>
-
-                    </td>
-
-                </tr>
-
-
-
-                <tr>
-
-                    <td>3</td>
-
-                    <td>David Perera</td>
-
-                    <td>Dehiwala</td>
-
-                    <td>0769876543</td>
-
-                    <td>
-
-                        <button
-
-                            type="button"
-
-                            class="btn btn-secondary btn-sm">
-
-                            View
-
-                        </button>
-
-                    </td>
-
-                </tr>
-
-
-            </tbody>
-
-
-        </table>
-
-    </div>
+    </main>
 
 </div>
 
 
-</section>
+<!-- ================= JAVASCRIPT ================= -->
 
-
-<div class="footer">
-
-    © 2026 Sunrise Dental Clinic Management System
-
-</div>
-
-
-</main>
-
-</div>
-
-
-<script>
-
-
-document
-
-    .getElementById("patientForm")
-
-    .addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-
-        const patientName =
-
-            document
-
-                .getElementById("patientName")
-
-                .value
-
-                .trim();
-
-
-        const address =
-
-            document
-
-                .getElementById("address")
-
-                .value
-
-                .trim();
-
-
-        const contactNumber =
-
-            document
-
-                .getElementById("contactNumber")
-
-                .value
-
-                .trim();
-
-
-
-        if (
-
-            !patientName ||
-
-            !address ||
-
-            !contactNumber
-
-        ) {
-
-            alert("Please complete all patient fields.");
-
-            return;
-
-        }
-
-
-
-        alert(
-
-            "Patient form is working.\n\n" +
-
-            "Backend API connection will be added later."
-
-        );
-
-    });
-
-
-
-document
-
-    .getElementById("patientSearch")
-
-    .addEventListener("keyup", function () {
-
-
-        const value =
-
-            this.value
-
-                .toLowerCase();
-
-
-        document
-
-            .querySelectorAll(
-
-                "#patientTable tbody tr"
-
-            )
-
-            .forEach(function (row) {
-
-
-                row.style.display =
-
-                    row.textContent
-
-                        .toLowerCase()
-
-                        .includes(value)
-
-                        ? ""
-
-                        : "none";
-
-
-            });
-
-
-    });
-
-
-</script>
+<script src="../js/patients.js"></script>
 
 
 </body>
