@@ -2,9 +2,11 @@ package com.sunrisedental.util;
 
 import com.sunrisedental.model.Appointment;
 import com.sunrisedental.model.Bill;
+import com.sunrisedental.model.DailyAppointmentReport;
 import com.sunrisedental.model.Dentist;
 import com.sunrisedental.model.Patient;
 import com.sunrisedental.model.Treatment;
+import com.sunrisedental.model.TreatmentRevenueReport;
 
 import java.util.List;
 
@@ -175,8 +177,7 @@ public class JsonUtil {
                 + ","
                 + "\"appointmentNumber\":\""
                 + HttpUtil.escapeJson(
-                        appointment
-                                .getAppointmentNumber())
+                        appointment.getAppointmentNumber())
                 + "\","
                 + "\"patientId\":"
                 + appointment.getPatientId()
@@ -188,12 +189,10 @@ public class JsonUtil {
                 + appointment.getTreatmentId()
                 + ","
                 + "\"appointmentDate\":\""
-                + appointment
-                        .getAppointmentDate()
+                + appointment.getAppointmentDate()
                 + "\","
                 + "\"appointmentTime\":\""
-                + appointment
-                        .getAppointmentTime()
+                + appointment.getAppointmentTime()
                 + "\","
                 + "\"status\":\""
                 + HttpUtil.escapeJson(
@@ -226,6 +225,7 @@ public class JsonUtil {
         return json.toString();
     }
 
+    
     public static String billToJson(
             Bill bill) {
 
@@ -279,6 +279,110 @@ public class JsonUtil {
                             bills.get(i)));
 
             if (i < bills.size() - 1) {
+                json.append(",");
+            }
+        }
+
+        json.append("]");
+
+        return json.toString();
+    }
+
+    
+    public static String dailyAppointmentReportToJson(
+            DailyAppointmentReport report) {
+
+        if (report == null) {
+            return "null";
+        }
+
+        return "{"
+                + "\"appointmentNumber\":\""
+                + HttpUtil.escapeJson(
+                        report.getAppointmentNumber())
+                + "\","
+                + "\"patientName\":\""
+                + HttpUtil.escapeJson(
+                        report.getPatientName())
+                + "\","
+                + "\"dentistName\":\""
+                + HttpUtil.escapeJson(
+                        report.getDentistName())
+                + "\","
+                + "\"treatmentName\":\""
+                + HttpUtil.escapeJson(
+                        report.getTreatmentName())
+                + "\","
+                + "\"appointmentTime\":\""
+                + report.getAppointmentTime()
+                + "\","
+                + "\"status\":\""
+                + HttpUtil.escapeJson(
+                        report.getStatus())
+                + "\""
+                + "}";
+    }
+
+    public static String dailyAppointmentReportsToJson(
+            List<DailyAppointmentReport> reports) {
+
+        StringBuilder json =
+                new StringBuilder("[");
+
+        for (int i = 0;
+             i < reports.size();
+             i++) {
+
+            json.append(
+                    dailyAppointmentReportToJson(
+                            reports.get(i)));
+
+            if (i < reports.size() - 1) {
+                json.append(",");
+            }
+        }
+
+        json.append("]");
+
+        return json.toString();
+    }
+
+   
+    public static String treatmentRevenueReportToJson(
+            TreatmentRevenueReport report) {
+
+        if (report == null) {
+            return "null";
+        }
+
+        return "{"
+                + "\"treatmentName\":\""
+                + HttpUtil.escapeJson(
+                        report.getTreatmentName())
+                + "\","
+                + "\"numberOfTreatments\":"
+                + report.getTreatmentCount()
+                + ","
+                + "\"revenue\":"
+                + report.getRevenue()
+                + "}";
+    }
+
+    public static String treatmentRevenueReportsToJson(
+            List<TreatmentRevenueReport> reports) {
+
+        StringBuilder json =
+                new StringBuilder("[");
+
+        for (int i = 0;
+             i < reports.size();
+             i++) {
+
+            json.append(
+                    treatmentRevenueReportToJson(
+                            reports.get(i)));
+
+            if (i < reports.size() - 1) {
                 json.append(",");
             }
         }

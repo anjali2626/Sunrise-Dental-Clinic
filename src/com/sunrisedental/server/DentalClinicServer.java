@@ -1,6 +1,6 @@
 package com.sunrisedental.server;
 
-import com.sun.net.httpserver.HttpServer; 
+import com.sun.net.httpserver.HttpServer;
 
 import com.sunrisedental.controller.PatientController;
 import com.sunrisedental.controller.DentistController;
@@ -10,6 +10,7 @@ import com.sunrisedental.controller.BillController;
 import com.sunrisedental.controller.UserController;
 import com.sunrisedental.controller.AuthController;
 import com.sunrisedental.controller.DashboardController;
+import com.sunrisedental.controller.ReportController;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -24,7 +25,7 @@ public class DentalClinicServer {
 
             HttpServer server = HttpServer.create(
                     new InetSocketAddress(PORT), 0);
-            
+
             AuthController authController =
                     new AuthController();
 
@@ -33,7 +34,6 @@ public class DentalClinicServer {
                     authController
             );
 
-            
             server.createContext("/", exchange -> {
 
                 String response =
@@ -52,41 +52,38 @@ public class DentalClinicServer {
                 exchange.getResponseBody().close();
             });
 
-            
             server.createContext(
                     "/api/patients",
                     new PatientController());
 
-            
             server.createContext(
                     "/api/dentists",
                     new DentistController());
 
-            
             server.createContext(
                     "/api/treatments",
                     new TreatmentController());
 
-            
             server.createContext(
                     "/api/appointments",
                     new AppointmentController());
 
-            
             server.createContext(
                     "/api/bills",
                     new BillController());
 
-            
             server.createContext(
                     "/api/login",
                     new UserController());
-            
+
             server.createContext(
                     "/api/dashboard",
                     new DashboardController());
 
-            
+            server.createContext(
+                    "/api/reports",
+                    new ReportController());
+
             server.setExecutor(null);
 
             server.start();
@@ -120,10 +117,14 @@ public class DentalClinicServer {
             System.out.println(
                     "Login API: http://localhost:" + PORT
                             + "/api/login");
-            
+
             System.out.println(
                     "Dashboard API: http://localhost:" + PORT
                             + "/api/dashboard");
+
+            System.out.println(
+                    "Reports API: http://localhost:" + PORT
+                            + "/api/reports");
 
         } catch (IOException e) {
 
