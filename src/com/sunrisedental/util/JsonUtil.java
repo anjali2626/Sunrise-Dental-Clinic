@@ -233,6 +233,15 @@ public class JsonUtil {
             return "null";
         }
 
+        String billDate = "";
+
+        if (bill.getBillDate() != null) {
+
+            billDate =
+                    bill.getBillDate()
+                            .toString();
+        }
+
         return "{"
                 + "\"billId\":"
                 + bill.getBillId()
@@ -248,6 +257,34 @@ public class JsonUtil {
                 + ","
                 + "\"totalAmount\":"
                 + bill.getTotalAmount()
+                + ","
+                + "\"billDate\":\""
+                + billDate
+                + "\""
                 + "}";
+    }
+
+    public static String billsToJson(
+            List<Bill> bills) {
+
+        StringBuilder json =
+                new StringBuilder("[");
+
+        for (int i = 0;
+             i < bills.size();
+             i++) {
+
+            json.append(
+                    billToJson(
+                            bills.get(i)));
+
+            if (i < bills.size() - 1) {
+                json.append(",");
+            }
+        }
+
+        json.append("]");
+
+        return json.toString();
     }
 }

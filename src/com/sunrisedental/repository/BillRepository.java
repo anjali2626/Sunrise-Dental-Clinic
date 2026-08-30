@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BillRepository {
 
@@ -27,16 +29,20 @@ public class BillRepository {
                              Statement.RETURN_GENERATED_KEYS)) {
 
             statement.setInt(
-                    1, bill.getAppointmentId());
+                    1,
+                    bill.getAppointmentId());
 
             statement.setBigDecimal(
-                    2, bill.getConsultationFee());
+                    2,
+                    bill.getConsultationFee());
 
             statement.setBigDecimal(
-                    3, bill.getTreatmentCost());
+                    3,
+                    bill.getTreatmentCost());
 
             statement.setBigDecimal(
-                    4, bill.getTotalAmount());
+                    4,
+                    bill.getTotalAmount());
 
             statement.executeUpdate();
 
@@ -83,8 +89,43 @@ public class BillRepository {
         return null;
     }
 
+    public List<Bill> findAll()
+            throws SQLException {
+
+        String sql = """
+                SELECT bill_id, appointment_id,
+                       consultation_fee, treatment_cost,
+                       total_amount, bill_date
+                FROM bills
+                ORDER BY bill_date DESC, bill_id DESC
+                """;
+
+        List<Bill> bills =
+                new ArrayList<>();
+
+        try (Connection connection =
+                     DatabaseConnection.getConnection();
+
+             PreparedStatement statement =
+                     connection.prepareStatement(sql);
+
+             ResultSet resultSet =
+                     statement.executeQuery()) {
+
+            while (resultSet.next()) {
+
+                bills.add(
+                        mapResultSetToBill(
+                                resultSet));
+            }
+        }
+
+        return bills;
+    }
+
     public Bill findByAppointmentId(
-            int appointmentId) throws SQLException {
+            int appointmentId)
+            throws SQLException {
 
         String sql = """
                 SELECT bill_id, appointment_id,
@@ -94,17 +135,22 @@ public class BillRepository {
                 WHERE appointment_id = ?
                 """;
 
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection =
+                     DatabaseConnection.getConnection();
+
              PreparedStatement statement =
                      connection.prepareStatement(sql)) {
 
-            statement.setInt(1, appointmentId);
+            statement.setInt(
+                    1,
+                    appointmentId);
 
             try (ResultSet resultSet =
                          statement.executeQuery()) {
 
                 if (resultSet.next()) {
-                    return mapResultSetToBill(resultSet);
+                    return mapResultSetToBill(
+                            resultSet);
                 }
             }
         }
@@ -123,21 +169,27 @@ public class BillRepository {
                 WHERE bill_id = ?
                 """;
 
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection =
+                     DatabaseConnection.getConnection();
+
              PreparedStatement statement =
                      connection.prepareStatement(sql)) {
 
             statement.setBigDecimal(
-                    1, bill.getConsultationFee());
+                    1,
+                    bill.getConsultationFee());
 
             statement.setBigDecimal(
-                    2, bill.getTreatmentCost());
+                    2,
+                    bill.getTreatmentCost());
 
             statement.setBigDecimal(
-                    3, bill.getTotalAmount());
+                    3,
+                    bill.getTotalAmount());
 
             statement.setInt(
-                    4, bill.getBillId());
+                    4,
+                    bill.getBillId());
 
             return statement.executeUpdate() > 0;
         }
@@ -151,7 +203,9 @@ public class BillRepository {
                 WHERE bill_id = ?
                 """;
 
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection =
+                     DatabaseConnection.getConnection();
+
              PreparedStatement statement =
                      connection.prepareStatement(sql)) {
 
@@ -162,7 +216,8 @@ public class BillRepository {
     }
 
     private Bill mapResultSetToBill(
-            ResultSet resultSet) throws SQLException {
+            ResultSet resultSet)
+            throws SQLException {
 
         Bill bill = new Bill();
 
@@ -184,10 +239,12 @@ public class BillRepository {
                 resultSet.getBigDecimal(
                         "total_amount"));
 
-        if (resultSet.getTimestamp("bill_date") != null) {
+        if (resultSet.getTimestamp("bill_date")
+                != null) {
 
             bill.setBillDate(
-                    resultSet.getTimestamp("bill_date")
+                    resultSet.getTimestamp(
+                            "bill_date")
                             .toLocalDateTime());
         }
 

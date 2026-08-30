@@ -9,12 +9,17 @@ import com.sunrisedental.repository.TreatmentRepository;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.List;
 
 public class BillService {
 
     private final BillRepository billRepository;
-    private final AppointmentRepository appointmentRepository;
-    private final TreatmentRepository treatmentRepository;
+
+    private final AppointmentRepository
+            appointmentRepository;
+
+    private final TreatmentRepository
+            treatmentRepository;
 
     public BillService() {
 
@@ -34,12 +39,14 @@ public class BillService {
             throws SQLException {
 
         if (appointmentId <= 0) {
+
             throw new IllegalArgumentException(
                     "Appointment ID must be greater than zero.");
         }
 
         if (consultationFee == null ||
-                consultationFee.compareTo(BigDecimal.ZERO) < 0) {
+                consultationFee.compareTo(
+                        BigDecimal.ZERO) < 0) {
 
             throw new IllegalArgumentException(
                     "Consultation fee cannot be negative.");
@@ -50,6 +57,7 @@ public class BillService {
                         appointmentId);
 
         if (appointment == null) {
+
             throw new IllegalArgumentException(
                     "Appointment not found.");
         }
@@ -59,6 +67,7 @@ public class BillService {
                         appointmentId);
 
         if (existingBill != null) {
+
             throw new IllegalArgumentException(
                     "A bill already exists for this appointment.");
         }
@@ -68,6 +77,7 @@ public class BillService {
                         appointment.getTreatmentId());
 
         if (treatment == null) {
+
             throw new IllegalArgumentException(
                     "Treatment not found.");
         }
@@ -76,7 +86,8 @@ public class BillService {
                 treatment.getTreatmentCost();
 
         BigDecimal totalAmount =
-                consultationFee.add(treatmentCost);
+                consultationFee.add(
+                        treatmentCost);
 
         Bill bill = new Bill();
 
@@ -92,30 +103,43 @@ public class BillService {
         bill.setTotalAmount(
                 totalAmount);
 
-        return billRepository.create(bill);
+        return billRepository.create(
+                bill);
     }
 
-    public Bill getBillById(int billId)
+    public Bill getBillById(
+            int billId)
             throws SQLException {
 
         if (billId <= 0) {
+
             throw new IllegalArgumentException(
                     "Bill ID must be greater than zero.");
         }
 
-        return billRepository.findById(billId);
+        return billRepository.findById(
+                billId);
+    }
+
+    public List<Bill> getAllBills()
+            throws SQLException {
+
+        return billRepository.findAll();
     }
 
     public Bill getBillByAppointmentId(
-            int appointmentId) throws SQLException {
+            int appointmentId)
+            throws SQLException {
 
         if (appointmentId <= 0) {
+
             throw new IllegalArgumentException(
                     "Appointment ID must be greater than zero.");
         }
 
-        return billRepository.findByAppointmentId(
-                appointmentId);
+        return billRepository
+                .findByAppointmentId(
+                        appointmentId);
     }
 
     public boolean updateBill(
@@ -124,16 +148,19 @@ public class BillService {
             throws SQLException {
 
         if (consultationFee == null ||
-                consultationFee.compareTo(BigDecimal.ZERO) < 0) {
+                consultationFee.compareTo(
+                        BigDecimal.ZERO) < 0) {
 
             throw new IllegalArgumentException(
                     "Consultation fee cannot be negative.");
         }
 
         Bill bill =
-                billRepository.findById(billId);
+                billRepository.findById(
+                        billId);
 
         if (bill == null) {
+
             return false;
         }
 
@@ -142,6 +169,7 @@ public class BillService {
                         bill.getAppointmentId());
 
         if (appointment == null) {
+
             return false;
         }
 
@@ -150,6 +178,7 @@ public class BillService {
                         appointment.getTreatmentId());
 
         if (treatment == null) {
+
             throw new IllegalArgumentException(
                     "Treatment not found.");
         }
@@ -167,17 +196,21 @@ public class BillService {
         bill.setTotalAmount(
                 totalAmount);
 
-        return billRepository.update(bill);
+        return billRepository.update(
+                bill);
     }
 
-    public boolean deleteBill(int billId)
+    public boolean deleteBill(
+            int billId)
             throws SQLException {
 
         if (billId <= 0) {
+
             throw new IllegalArgumentException(
                     "Bill ID must be greater than zero.");
         }
 
-        return billRepository.delete(billId);
+        return billRepository.delete(
+                billId);
     }
 }

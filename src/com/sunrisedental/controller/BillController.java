@@ -10,6 +10,7 @@ import com.sunrisedental.util.JsonUtil;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Map;
 
 public class BillController
@@ -18,12 +19,14 @@ public class BillController
     private final BillService billService;
 
     public BillController() {
+
         this.billService =
                 new BillService();
     }
 
     @Override
-    public void handle(HttpExchange exchange)
+    public void handle(
+            HttpExchange exchange)
             throws IOException {
 
         try {
@@ -31,21 +34,28 @@ public class BillController
             String method =
                     exchange.getRequestMethod();
 
-            if ("OPTIONS".equalsIgnoreCase(method)) {
+            if ("OPTIONS".equalsIgnoreCase(
+                    method)) {
 
-                HttpUtil.handleOptions(exchange);
+                HttpUtil.handleOptions(
+                        exchange);
+
                 return;
             }
 
-            if ("POST".equalsIgnoreCase(method)) {
+            if ("POST".equalsIgnoreCase(
+                    method)) {
 
                 handlePost(exchange);
+
                 return;
             }
 
-            if ("GET".equalsIgnoreCase(method)) {
+            if ("GET".equalsIgnoreCase(
+                    method)) {
 
                 handleGet(exchange);
+
                 return;
             }
 
@@ -81,15 +91,18 @@ public class BillController
                         exchange);
 
         Map<String, String> data =
-                HttpUtil.parseFormData(body);
+                HttpUtil.parseFormData(
+                        body);
 
         int appointmentId =
                 Integer.parseInt(
-                        data.get("appointmentId"));
+                        data.get(
+                                "appointmentId"));
 
         BigDecimal consultationFee =
                 new BigDecimal(
-                        data.get("consultationFee"));
+                        data.get(
+                                "consultationFee"));
 
         Bill bill =
                 billService.generateBill(
@@ -114,10 +127,35 @@ public class BillController
         String basePath =
                 "/api/bills";
 
+        /*
+         * GET /api/bills
+         * Returns all bills.
+         */
+
+        if (path.equals(basePath) ||
+                path.equals(basePath + "/")) {
+
+            List<Bill> bills =
+                    billService.getAllBills();
+
+            HttpUtil.sendResponse(
+                    exchange,
+                    200,
+                    JsonUtil.billsToJson(
+                            bills));
+
+            return;
+        }
+
+       
+
+        String billIdText =
+                path.substring(
+                        basePath.length() + 1);
+
         int billId =
                 Integer.parseInt(
-                        path.substring(
-                                basePath.length() + 1));
+                        billIdText);
 
         Bill bill =
                 billService.getBillById(
