@@ -31,10 +31,7 @@ async function loadDashboard() {
             );
         }
 
-        /* ================================
-           STATISTICS
-           ================================= */
-
+        
         const statNumbers =
             document.querySelectorAll(
                 ".stats-grid .stat-number"
@@ -63,10 +60,6 @@ async function loadDashboard() {
                     );
         }
 
-
-        /* ================================
-           TODAY'S APPOINTMENTS
-           ================================= */
 
         const tableBody =
             document.querySelector(
@@ -159,10 +152,6 @@ async function loadDashboard() {
 }
 
 
-/* =========================================
-   STATUS BADGE
-   ========================================= */
-
 function createStatusBadge(status) {
 
     const safeStatus =
@@ -212,10 +201,6 @@ function createStatusBadge(status) {
 }
 
 
-/* =========================================
-   HTML ESCAPE
-   ========================================= */
-
 function escapeHtml(value) {
 
     const div =
@@ -229,10 +214,6 @@ function escapeHtml(value) {
     return div.innerHTML;
 }
 
-
-/* =========================================
-   ERROR MESSAGE
-   ========================================= */
 
 function showDashboardError() {
 

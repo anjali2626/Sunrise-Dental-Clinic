@@ -19,9 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("patientSearch");
 
 
-    /* =====================================================
-       LOAD PATIENTS FROM BACKEND
-       ===================================================== */
 
     loadPatients();
 
@@ -63,10 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-
-    /* =====================================================
-       DISPLAY PATIENTS
-       ===================================================== */
 
     function displayPatients(patients) {
 
@@ -119,10 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* =====================================================
-       SHOW ADD PATIENT SECTION
-       ===================================================== */
-
     if (showAddPatientBtn) {
 
         showAddPatientBtn.addEventListener(
@@ -142,10 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* =====================================================
-       CANCEL ADD PATIENT
-       ===================================================== */
-
     if (cancelAddPatientBtn) {
 
         cancelAddPatientBtn.addEventListener(
@@ -162,10 +147,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
-    /* =====================================================
-       ADD PATIENT
-       ===================================================== */
 
     if (form) {
 
@@ -196,10 +177,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         .value
                         .trim();
 
-
-                /* -----------------------------------------
-                   FRONTEND VALIDATION
-                   ----------------------------------------- */
 
                 if (
                     patientName === "" ||
@@ -275,10 +252,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
 
 
-                    /* -------------------------------------
-                       SUCCESS
-                       ------------------------------------- */
-
                     alert(
                         "Patient added successfully."
                     );
@@ -289,9 +262,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     addPatientSection.style.display =
                         "none";
-
-
-                    /* Refresh patient records */
 
                     loadPatients();
 
@@ -314,10 +284,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
-    /* =====================================================
-       SEARCH PATIENTS
-       ===================================================== */
 
     if (patientSearch) {
 
@@ -353,10 +319,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
-    /* =====================================================
-       VIEW PATIENT
-       ===================================================== */
 
     window.viewPatient = async function (patientId) {
 
@@ -412,10 +374,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     };
 
-
-    /* =====================================================
-       HTML ESCAPING
-       ===================================================== */
 
     function escapeHtml(value) {
 

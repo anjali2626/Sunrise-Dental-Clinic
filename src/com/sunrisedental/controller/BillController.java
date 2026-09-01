@@ -126,11 +126,7 @@ public class BillController
 
         String basePath =
                 "/api/bills";
-
-        /*
-         * GET /api/bills
-         * Returns all bills.
-         */
+        
 
         if (path.equals(basePath) ||
                 path.equals(basePath + "/")) {

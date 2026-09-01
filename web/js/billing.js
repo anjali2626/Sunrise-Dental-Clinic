@@ -33,9 +33,7 @@ document.addEventListener(
         let patients = [];
         let treatments = [];
 
-        /*
-         * Load all data when page opens
-         */
+       
         loadBillingData();
 
         async function loadBillingData() {
@@ -120,9 +118,7 @@ document.addEventListener(
             }
         }
 
-        /*
-         * Populate appointment dropdown
-         */
+        
         function populateAppointmentDropdown() {
 
             if (!appointmentSelect) {
@@ -174,10 +170,7 @@ document.addEventListener(
             );
         }
 
-        /*
-         * Update treatment cost when
-         * appointment is selected
-         */
+       
         if (appointmentSelect) {
 
             appointmentSelect.addEventListener(
@@ -223,9 +216,6 @@ document.addEventListener(
             );
         }
 
-        /*
-         * Calculate total amount
-         */
         function calculateTotal() {
 
             const consultationValue =
@@ -245,10 +235,7 @@ document.addEventListener(
                 ).toFixed(2);
         }
 
-        /*
-         * Recalculate when consultation
-         * fee changes
-         */
+       
         if (consultationFee) {
 
             consultationFee.addEventListener(
@@ -257,9 +244,7 @@ document.addEventListener(
             );
         }
 
-        /*
-         * Submit bill
-         */
+      
         if (billingForm) {
 
             billingForm.addEventListener(
@@ -367,9 +352,7 @@ document.addEventListener(
             );
         }
 
-        /*
-         * Display all bills in table
-         */
+        
         function displayBills(bills) {
 
             if (!billsTableBody) {

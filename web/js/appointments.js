@@ -21,23 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("appointmentSearch");
 
 
-    /*
-     * =========================================================
-     * LOAD DATA WHEN PAGE OPENS
-     * =========================================================
-     */
-
     loadPatients();
     loadDentists();
     loadTreatments();
     loadAppointments();
 
-
-    /*
-     * =========================================================
-     * LOAD PATIENTS
-     * =========================================================
-     */
 
     async function loadPatients() {
 
@@ -88,12 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-
-    /*
-     * =========================================================
-     * LOAD DENTISTS
-     * =========================================================
-     */
 
     async function loadDentists() {
 
@@ -151,12 +133,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /*
-     * =========================================================
-     * LOAD TREATMENTS
-     * =========================================================
-     */
-
     async function loadTreatments() {
 
         try {
@@ -213,12 +189,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /*
-     * =========================================================
-     * LOAD APPOINTMENTS
-     * =========================================================
-     */
-
     async function loadAppointments() {
 
         try {
@@ -238,11 +208,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const appointments =
                 await response.json();
 
-            /*
-             * We also need patient, dentist and treatment
-             * information so that IDs can be converted into
-             * readable names.
-             */
 
             const patientsResponse =
                 await fetch(
@@ -279,11 +244,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const treatments =
                 await treatmentsResponse.json();
 
-
-            /*
-             * Create lookup maps.
-             */
-
             const patientMap = {};
 
             patients.forEach(function (patient) {
@@ -311,37 +271,19 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
 
-            /*
-             * Clear existing table rows.
-             */
-
             appointmentTableBody.innerHTML = "";
 
-
-            /*
-             * Display appointments.
-             */
 
             appointments.forEach(function (appointment) {
 
                 const row =
                     document.createElement("tr");
 
-
-                /*
-                 * Appointment Number
-                 */
-
                 const appointmentNumberCell =
                     document.createElement("td");
 
                 appointmentNumberCell.textContent =
                     appointment.appointmentNumber;
-
-
-                /*
-                 * Patient
-                 */
 
                 const patientCell =
                     document.createElement("td");
@@ -350,22 +292,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     patientMap[appointment.patientId]
                     || "Unknown Patient";
 
-
-                /*
-                 * Dentist
-                 */
-
                 const dentistCell =
                     document.createElement("td");
 
                 dentistCell.textContent =
                     dentistMap[appointment.dentistId]
                     || "Unknown Dentist";
-
-
-                /*
-                 * Treatment
-                 */
 
                 const treatmentCell =
                     document.createElement("td");
@@ -374,21 +306,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     treatmentMap[appointment.treatmentId]
                     || "Unknown Treatment";
 
-
-                /*
-                 * Date
-                 */
-
                 const dateCell =
                     document.createElement("td");
 
                 dateCell.textContent =
                     appointment.appointmentDate;
-
-
-                /*
-                 * Time
-                 */
 
                 const timeCell =
                     document.createElement("td");
@@ -397,11 +319,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     formatTime(
                         appointment.appointmentTime
                     );
-
-
-                /*
-                 * Status
-                 */
 
                 const statusCell =
                     document.createElement("td");
@@ -417,10 +334,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 statusBadge.textContent =
                     status;
 
-
-                /*
-                 * Apply badge style according to status.
-                 */
+					
 
                 if (
                     status.toLowerCase() ===
@@ -470,11 +384,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     statusBadge
                 );
 
-
-                /*
-                 * Add cells to row.
-                 */
-
                 row.appendChild(
                     appointmentNumberCell
                 );
@@ -502,11 +411,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 row.appendChild(
                     statusCell
                 );
-
-
-                /*
-                 * Add row to table.
-                 */
+				
 
                 appointmentTableBody.appendChild(
                     row
@@ -530,11 +435,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /*
-     * =========================================================
-     * FORMAT TIME
-     * =========================================================
-     */
 
     function formatTime(time) {
 
@@ -577,11 +477,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /*
-     * =========================================================
-     * CREATE NEW APPOINTMENT
-     * =========================================================
-     */
 
     if (form) {
 
@@ -629,10 +524,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         .value;
 
 
-                /*
-                 * Required field validation.
-                 */
-
                 if (
                     !appointmentNumber ||
                     !patientId ||
@@ -650,10 +541,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                /*
-                 * Disable submit button while sending.
-                 */
-
                 const submitButton =
                     form.querySelector(
                         'button[type="submit"]'
@@ -667,12 +554,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 try {
-
-                    /*
-                     * The Java backend expects
-                     * application/x-www-form-urlencoded
-                     * data.
-                     */
 
                     const formData =
                         new URLSearchParams();
@@ -707,11 +588,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         time
                     );
 
-
-                    /*
-                     * Send POST request.
-                     */
-
                     const response =
                         await fetch(
                             API_BASE_URL +
@@ -730,18 +606,13 @@ document.addEventListener("DOMContentLoaded", function () {
                         );
 
 
-                    /*
-                     * Read backend response.
-                     */
+                  
 
                     const result =
                         await response.json();
 
 
-                    /*
-                     * Handle failed request.
-                     */
-
+                   
                     if (!response.ok) {
 
                         throw new Error(
@@ -751,26 +622,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
 
 
-                    /*
-                     * Appointment successfully created.
-                     */
-
                     alert(
                         "Appointment added successfully."
                     );
 
 
-                    /*
-                     * Clear form.
-                     */
-
                     form.reset();
 
-
-                    /*
-                     * Reload appointment table
-                     * from MySQL.
-                     */
 
                     await loadAppointments();
 
@@ -790,9 +648,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 } finally {
 
-                    /*
-                     * Enable button again.
-                     */
+                   
 
                     submitButton.disabled =
                         false;
@@ -805,11 +661,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /*
-     * =========================================================
-     * APPOINTMENT SEARCH
-     * =========================================================
-     */
 
     if (search) {
 

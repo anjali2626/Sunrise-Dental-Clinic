@@ -35,10 +35,6 @@ public class AuthService {
                 userService.findUserByUsername(
                         username.trim());
 
-        /*
-         * Do not reveal whether the username
-         * or password was incorrect.
-         */
         if (user == null) {
             return null;
         }

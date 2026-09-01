@@ -14,9 +14,6 @@ public class PasswordUtilTest {
                 "========================================");
 
 
-        /* =================================================
-           ADMIN USER
-           ================================================= */
 
         String adminPassword = "admin123";
 
@@ -43,9 +40,6 @@ public class PasswordUtilTest {
                 + adminResult);
 
 
-        /* =================================================
-           RECEPTION USER
-           ================================================= */
 
         String receptionPassword =
                 "Reception@123";
@@ -75,9 +69,6 @@ public class PasswordUtilTest {
                 + receptionResult);
 
 
-        /* =================================================
-           STAFF01 USER
-           ================================================= */
 
         String staff01Password =
                 "Staff01@123";
@@ -107,9 +98,6 @@ public class PasswordUtilTest {
                 + staff01Result);
 
 
-        /* =================================================
-           STAFF02 USER
-           ================================================= */
 
         String staff02Password =
                 "Staff02@123";
@@ -138,10 +126,7 @@ public class PasswordUtilTest {
                 "Staff02 validation result: "
                 + staff02Result);
 
-
-        /* =================================================
-           WRONG PASSWORD TEST
-           ================================================= */
+        
 
         boolean wrongPasswordResult =
                 PasswordUtil.validatePassword(
