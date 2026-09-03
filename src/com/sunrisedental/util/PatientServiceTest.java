@@ -1,38 +1,24 @@
 package com.sunrisedental.util;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
 import com.sunrisedental.model.Patient;
 import com.sunrisedental.service.PatientService;
 
-import java.util.List;
-
 public class PatientServiceTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void testGetAllPatients() throws SQLException {
 
-        try {
+        PatientService service = new PatientService();
 
-            PatientService service =
-                    new PatientService();
+        List<Patient> patients = service.getAllPatients();
 
-            System.out.println(
-                    "Testing Patient Service...");
-
-            List<Patient> patients =
-                    service.getAllPatients();
-
-            System.out.println(
-                    "Total patients: "
-                    + patients.size());
-
-            System.out.println(
-                    "Patient service test completed successfully!");
-
-        } catch (Exception e) {
-
-            System.out.println(
-                    "Patient service test failed!");
-
-            e.printStackTrace();
-        }
+        assertNotNull(patients, "Patient list should not be null");
     }
 }

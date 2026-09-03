@@ -3,46 +3,45 @@ package com.sunrisedental.util;
 import com.sunrisedental.model.Bill;
 import com.sunrisedental.service.BillService;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class BillServiceTest {
 
-    public static void main(String[] args) {
+    @Test
+    void testGetBillById() {
 
         try {
 
             BillService service =
                     new BillService();
 
-            System.out.println(
-                    "Testing Bill Service...");
-
             Bill bill =
                     service.getBillById(1);
 
             if (bill != null) {
 
-                System.out.println(
-                        "Bill ID: "
-                        + bill.getBillId());
+                assertTrue(
+                        bill.getBillId() > 0,
+                        "Bill ID should be greater than 0");
 
-                System.out.println(
-                        "Total amount: "
-                        + bill.getTotalAmount());
+                assertNotNull(
+                        bill.getTotalAmount(),
+                        "Total amount should not be null");
 
             } else {
 
-                System.out.println(
-                        "No bill found with ID 1.");
+                assertTrue(
+                        true,
+                        "No bill found with Bill ID 1");
             }
-
-            System.out.println(
-                    "Bill service test completed successfully!");
 
         } catch (Exception e) {
 
-            System.out.println(
-                    "Bill service test failed!");
-
-            e.printStackTrace();
+            fail(
+                    "Bill service test failed: "
+                    + e.getMessage());
         }
     }
 }

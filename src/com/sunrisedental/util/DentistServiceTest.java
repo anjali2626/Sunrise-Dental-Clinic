@@ -5,34 +5,48 @@ import com.sunrisedental.service.DentistService;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class DentistServiceTest {
 
-    public static void main(String[] args) {
+    @Test
+    void testGetActiveDentists() {
 
         try {
 
             DentistService service =
                     new DentistService();
 
-            System.out.println(
-                    "Testing Dentist Service...");
-
             List<Dentist> dentists =
                     service.getActiveDentists();
 
-            System.out.println(
-                    "Active dentists: "
-                    + dentists.size());
+            assertNotNull(
+                    dentists,
+                    "Active dentist list should not be null");
 
-            System.out.println(
-                    "Dentist service test completed successfully!");
+            assertTrue(
+                    dentists.size() >= 0,
+                    "Active dentist list should contain zero or more dentists");
+
+            for (Dentist dentist : dentists) {
+
+                assertNotNull(
+                        dentist,
+                        "Dentist object should not be null");
+
+                assertTrue(
+                        dentist.isActive(),
+                        "Returned dentist should be active");
+
+            }
 
         } catch (Exception e) {
 
-            System.out.println(
-                    "Dentist service test failed!");
-
-            e.printStackTrace();
+            fail(
+                    "Dentist service test failed: "
+                    + e.getMessage());
         }
     }
 }

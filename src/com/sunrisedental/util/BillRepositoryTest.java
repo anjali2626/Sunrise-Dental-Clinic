@@ -3,61 +3,61 @@ package com.sunrisedental.util;
 import com.sunrisedental.model.Bill;
 import com.sunrisedental.repository.BillRepository;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class BillRepositoryTest {
 
-    public static void main(String[] args) {
+    @Test
+    void testFindBillById() {
 
         try {
 
             BillRepository repository =
                     new BillRepository();
 
-            System.out.println(
-                    "Testing Bill Repository...");
-
-            Bill bill = repository.findById(1);
+            Bill bill =
+                    repository.findById(1);
 
             if (bill != null) {
 
-                System.out.println(
-                        "Bill ID: "
-                        + bill.getBillId());
+                assertTrue(
+                        bill.getBillId() > 0,
+                        "Bill ID should be greater than 0");
 
-                System.out.println(
-                        "Appointment ID: "
-                        + bill.getAppointmentId());
+                assertTrue(
+                        bill.getAppointmentId() > 0,
+                        "Appointment ID should be greater than 0");
 
-                System.out.println(
-                        "Consultation Fee: "
-                        + bill.getConsultationFee());
+                assertNotNull(
+                        bill.getConsultationFee(),
+                        "Consultation fee should not be null");
 
-                System.out.println(
-                        "Treatment Cost: "
-                        + bill.getTreatmentCost());
+                assertNotNull(
+                        bill.getTreatmentCost(),
+                        "Treatment cost should not be null");
 
-                System.out.println(
-                        "Total Amount: "
-                        + bill.getTotalAmount());
+                assertNotNull(
+                        bill.getTotalAmount(),
+                        "Total amount should not be null");
 
-                System.out.println(
-                        "Bill Date: "
-                        + bill.getBillDate());
+                assertNotNull(
+                        bill.getBillDate(),
+                        "Bill date should not be null");
 
             } else {
 
-                System.out.println(
-                        "No bill found with Bill ID 1.");
+                assertTrue(
+                        true,
+                        "No bill found with Bill ID 1");
             }
-
-            System.out.println(
-                    "Bill repository test completed successfully!");
 
         } catch (Exception e) {
 
-            System.out.println(
-                    "Bill repository test failed!");
-
-            e.printStackTrace();
+            fail(
+                    "Bill repository test failed: "
+                    + e.getMessage());
         }
     }
 }

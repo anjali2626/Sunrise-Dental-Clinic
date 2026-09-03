@@ -3,51 +3,54 @@ package com.sunrisedental.util;
 import com.sunrisedental.model.User;
 import com.sunrisedental.service.UserService;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class UserServiceTest {
 
-    public static void main(String[] args) {
+    @Test
+    void testFindUserByUsername() {
 
         try {
 
             UserService service =
                     new UserService();
 
-            System.out.println(
-                    "Testing User Service...");
-
-            
             User user =
                     service.findUserByUsername("admin");
 
             if (user != null) {
 
-                System.out.println(
-                        "User found: "
-                        + user.getUsername());
+                assertNotNull(
+                        user.getUsername(),
+                        "Username should not be null");
 
-                System.out.println(
-                        "Full name: "
-                        + user.getFullName());
+                assertEquals(
+                        "admin",
+                        user.getUsername(),
+                        "Returned username should be admin");
 
-                System.out.println(
-                        "Role: "
-                        + user.getRole());
+                assertNotNull(
+                        user.getFullName(),
+                        "Full name should not be null");
+
+                assertNotNull(
+                        user.getRole(),
+                        "User role should not be null");
 
             } else {
 
-                System.out.println(
-                        "User not found.");
+                assertTrue(
+                        true,
+                        "Admin user was not found in the database");
             }
-
-            System.out.println(
-                    "User service test completed successfully!");
 
         } catch (Exception e) {
 
-            System.out.println(
-                    "User service test failed!");
-
-            e.printStackTrace();
+            fail(
+                    "User service test failed: "
+                    + e.getMessage());
         }
     }
 }

@@ -5,24 +5,53 @@ import com.sunrisedental.service.AppointmentService;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class AppointmentServiceTest {
 
-    public static void main(String[] args) {
+    @Test
+    void testGetAllAppointments() {
 
         try {
 
             AppointmentService service =
                     new AppointmentService();
 
-            System.out.println(
-                    "Testing Appointment Service...");
+            List<Appointment> appointments =
+                    service.getAllAppointments();
+
+            assertNotNull(
+                    appointments,
+                    "Appointment list should not be null");
+
+            assertTrue(
+                    appointments.size() >= 0,
+                    "Appointment list should contain zero or more appointments");
+
+        } catch (Exception e) {
+
+            fail(
+                    "Get all appointments test failed: "
+                    + e.getMessage());
+        }
+    }
+
+    @Test
+    void testGetAppointmentByNumber() {
+
+        try {
+
+            AppointmentService service =
+                    new AppointmentService();
 
             List<Appointment> appointments =
                     service.getAllAppointments();
 
-            System.out.println(
-                    "Total appointments: "
-                    + appointments.size());
+            assertNotNull(
+                    appointments,
+                    "Appointment list should not be null");
 
             if (!appointments.isEmpty()) {
 
@@ -30,28 +59,29 @@ public class AppointmentServiceTest {
                         appointments.get(0)
                                 .getAppointmentNumber();
 
+                assertNotNull(
+                        appointmentNumber,
+                        "Appointment number should not be null");
+
                 Appointment appointment =
                         service.getAppointmentByNumber(
                                 appointmentNumber);
 
-                if (appointment != null) {
+                assertNotNull(
+                        appointment,
+                        "Appointment should be found by appointment number");
 
-                    System.out.println(
-                            "Appointment found: "
-                            + appointment
-                                    .getAppointmentNumber());
-                }
+                assertEquals(
+                        appointmentNumber,
+                        appointment.getAppointmentNumber(),
+                        "Returned appointment number should match the searched number");
             }
-
-            System.out.println(
-                    "Appointment service test completed successfully!");
 
         } catch (Exception e) {
 
-            System.out.println(
-                    "Appointment service test failed!");
-
-            e.printStackTrace();
+            fail(
+                    "Get appointment by number test failed: "
+                    + e.getMessage());
         }
     }
 }

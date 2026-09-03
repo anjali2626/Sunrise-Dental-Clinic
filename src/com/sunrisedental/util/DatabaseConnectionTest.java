@@ -1,24 +1,36 @@
 package com.sunrisedental.util;
 
 import java.sql.Connection;
-import java.sql.SQLException;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DatabaseConnectionTest {
 
-    public static void main(String[] args) {
+    @Test
+    void testDatabaseConnection() {
 
-        try (Connection connection = DatabaseConnection.getConnection()) {
+        try (Connection connection =
+                     DatabaseConnection.getConnection()) {
 
-            if (connection != null) {
-                System.out.println("Database connection successful!");
-                System.out.println("Connected to: " 
-                        + connection.getCatalog());
-            }
+            assertNotNull(
+                    connection,
+                    "Database connection should not be null");
 
-        } catch (SQLException e) {
+            assertFalse(
+                    connection.isClosed(),
+                    "Database connection should be open");
 
-            System.out.println("Database connection failed!");
-            e.printStackTrace();
+            assertNotNull(
+                    connection.getCatalog(),
+                    "Database catalog should not be null");
+
+        } catch (Exception e) {
+
+            fail(
+                    "Database connection test failed: "
+                    + e.getMessage());
         }
     }
 }

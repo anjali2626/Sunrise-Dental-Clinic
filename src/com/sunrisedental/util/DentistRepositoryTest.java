@@ -5,44 +5,52 @@ import com.sunrisedental.repository.DentistRepository;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class DentistRepositoryTest {
 
-    public static void main(String[] args) {
+    @Test
+    void testFindAllDentists() {
 
         try {
 
             DentistRepository repository =
                     new DentistRepository();
 
-            System.out.println("Testing Dentist Repository...");
-
             List<Dentist> dentists =
                     repository.findAll();
 
-            System.out.println(
-                    "Total dentists: " + dentists.size());
+            assertNotNull(
+                    dentists,
+                    "Dentist list should not be null");
+
+            assertTrue(
+                    dentists.size() >= 0,
+                    "Dentist list should contain zero or more dentists");
 
             for (Dentist dentist : dentists) {
 
-                System.out.println(
-                        dentist.getDentistId()
-                        + " - "
-                        + dentist.getDentistName()
-                        + " - "
-                        + dentist.getSpecialization()
-                        + " - Active: "
-                        + dentist.isActive());
-            }
+                assertNotNull(
+                        dentist,
+                        "Dentist object should not be null");
 
-            System.out.println(
-                    "Dentist repository test completed successfully!");
+                assertTrue(
+                        dentist.getDentistId() > 0,
+                        "Dentist ID should be greater than 0");
+
+                assertNotNull(
+                        dentist.getDentistName(),
+                        "Dentist name should not be null");
+
+            }
 
         } catch (Exception e) {
 
-            System.out.println(
-                    "Dentist repository test failed!");
-
-            e.printStackTrace();
+            fail(
+                    "Dentist repository test failed: "
+                    + e.getMessage());
         }
     }
 }

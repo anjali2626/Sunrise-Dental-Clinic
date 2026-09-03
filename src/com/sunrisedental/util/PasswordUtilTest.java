@@ -1,154 +1,98 @@
 package com.sunrisedental.util;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class PasswordUtilTest {
 
-    public static void main(String[] args) {
+    @Test
+    void testPasswordHashingAndValidation() {
 
-        System.out.println(
-                "========================================");
+        try {
 
-        System.out.println(
-                "Password Hashing and Validation Test");
+            String adminPassword = "admin123";
 
-        System.out.println(
-                "========================================");
+            String adminHash =
+                    PasswordUtil.hashPassword(
+                            adminPassword);
 
+            assertNotNull(
+                    adminHash,
+                    "Admin password hash should not be null");
 
-
-        String adminPassword = "admin123";
-
-        String adminHash =
-                PasswordUtil.hashPassword(
-                        adminPassword);
-
-        System.out.println();
-
-        System.out.println(
-                "Admin password: " + adminPassword);
-
-        System.out.println(
-                "Admin generated hash: " + adminHash);
+            assertTrue(
+                    PasswordUtil.validatePassword(
+                            adminPassword,
+                            adminHash),
+                    "Admin password validation should succeed");
 
 
-        boolean adminResult =
-                PasswordUtil.validatePassword(
-                        adminPassword,
-                        adminHash);
+            String receptionPassword =
+                    "Reception@123";
 
-        System.out.println(
-                "Admin validation result: "
-                + adminResult);
+            String receptionHash =
+                    PasswordUtil.hashPassword(
+                            receptionPassword);
 
+            assertNotNull(
+                    receptionHash,
+                    "Reception password hash should not be null");
 
-
-        String receptionPassword =
-                "Reception@123";
-
-        String receptionHash =
-                PasswordUtil.hashPassword(
-                        receptionPassword);
-
-        System.out.println();
-
-        System.out.println(
-                "Reception password: "
-                + receptionPassword);
-
-        System.out.println(
-                "Reception generated hash: "
-                + receptionHash);
+            assertTrue(
+                    PasswordUtil.validatePassword(
+                            receptionPassword,
+                            receptionHash),
+                    "Reception password validation should succeed");
 
 
-        boolean receptionResult =
-                PasswordUtil.validatePassword(
-                        receptionPassword,
-                        receptionHash);
+            String staff01Password =
+                    "Staff01@123";
 
-        System.out.println(
-                "Reception validation result: "
-                + receptionResult);
+            String staff01Hash =
+                    PasswordUtil.hashPassword(
+                            staff01Password);
 
+            assertNotNull(
+                    staff01Hash,
+                    "Staff01 password hash should not be null");
 
-
-        String staff01Password =
-                "Staff01@123";
-
-        String staff01Hash =
-                PasswordUtil.hashPassword(
-                        staff01Password);
-
-        System.out.println();
-
-        System.out.println(
-                "Staff01 password: "
-                + staff01Password);
-
-        System.out.println(
-                "Staff01 generated hash: "
-                + staff01Hash);
+            assertTrue(
+                    PasswordUtil.validatePassword(
+                            staff01Password,
+                            staff01Hash),
+                    "Staff01 password validation should succeed");
 
 
-        boolean staff01Result =
-                PasswordUtil.validatePassword(
-                        staff01Password,
-                        staff01Hash);
+            String staff02Password =
+                    "Staff02@123";
 
-        System.out.println(
-                "Staff01 validation result: "
-                + staff01Result);
+            String staff02Hash =
+                    PasswordUtil.hashPassword(
+                            staff02Password);
 
+            assertNotNull(
+                    staff02Hash,
+                    "Staff02 password hash should not be null");
 
-
-        String staff02Password =
-                "Staff02@123";
-
-        String staff02Hash =
-                PasswordUtil.hashPassword(
-                        staff02Password);
-
-        System.out.println();
-
-        System.out.println(
-                "Staff02 password: "
-                + staff02Password);
-
-        System.out.println(
-                "Staff02 generated hash: "
-                + staff02Hash);
+            assertTrue(
+                    PasswordUtil.validatePassword(
+                            staff02Password,
+                            staff02Hash),
+                    "Staff02 password validation should succeed");
 
 
-        boolean staff02Result =
-                PasswordUtil.validatePassword(
-                        staff02Password,
-                        staff02Hash);
+            assertFalse(
+                    PasswordUtil.validatePassword(
+                            "WrongPassword",
+                            receptionHash),
+                    "Wrong password should not be validated successfully");
 
-        System.out.println(
-                "Staff02 validation result: "
-                + staff02Result);
+        } catch (Exception e) {
 
-        
-
-        boolean wrongPasswordResult =
-                PasswordUtil.validatePassword(
-                        "WrongPassword",
-                        receptionHash);
-
-        System.out.println();
-
-        System.out.println(
-                "Wrong password validation result: "
-                + wrongPasswordResult);
-
-
-        System.out.println();
-
-        System.out.println(
-                "========================================");
-
-        System.out.println(
-                "Password utility testing completed.");
-
-        System.out.println(
-                "========================================");
+            fail(
+                    "Password utility test failed: "
+                    + e.getMessage());
+        }
     }
 }

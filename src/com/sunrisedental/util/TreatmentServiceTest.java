@@ -5,34 +5,47 @@ import com.sunrisedental.service.TreatmentService;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class TreatmentServiceTest {
 
-    public static void main(String[] args) {
+    @Test
+    void testGetActiveTreatments() {
 
         try {
 
             TreatmentService service =
                     new TreatmentService();
 
-            System.out.println(
-                    "Testing Treatment Service...");
-
             List<Treatment> treatments =
                     service.getActiveTreatments();
 
-            System.out.println(
-                    "Active treatments: "
-                    + treatments.size());
+            assertNotNull(
+                    treatments,
+                    "Active treatment list should not be null");
 
-            System.out.println(
-                    "Treatment service test completed successfully!");
+            assertTrue(
+                    treatments.size() >= 0,
+                    "Active treatment list should contain zero or more treatments");
+
+            for (Treatment treatment : treatments) {
+
+                assertNotNull(
+                        treatment,
+                        "Treatment object should not be null");
+
+                assertTrue(
+                        treatment.isActive(),
+                        "Returned treatment should be active");
+            }
 
         } catch (Exception e) {
 
-            System.out.println(
-                    "Treatment service test failed!");
-
-            e.printStackTrace();
+            fail(
+                    "Treatment service test failed: "
+                    + e.getMessage());
         }
     }
 }
